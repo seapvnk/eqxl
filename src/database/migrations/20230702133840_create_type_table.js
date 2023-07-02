@@ -1,10 +1,8 @@
-const { v4: uuidv4 } = require("uuid");
-
 exports.up = function (knex) {
   return knex.schema
     .createTable("type", function (table) {
-      table.uuid("id").primary().defaultTo(uuidv4());
-      table.string("name").notNullable();
+      table.uuid("id").primary();
+      table.string("name").notNullable().unique();
       table.text("validation");
       table.text("transformation");
     })
